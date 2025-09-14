@@ -70,8 +70,8 @@
   <div class="container">
     <!-- Player Input Form -->
     <div id="form">
-      <input type="text" id="player-1" placeholder="Player 1 name" />
-      <input type="text" id="player-2" placeholder="Player 2 name" />
+      <input type="text" id="player1" placeholder="Player 1 name" />
+      <input type="text" id="player2" placeholder="Player 2 name" />
       <button id="submit">Submit</button>
     </div>
 
@@ -94,8 +94,8 @@
   </div>
 
   <script>
-    const player1Input = document.getElementById("player-1");
-    const player2Input = document.getElementById("player-2");
+    const player1Input = document.getElementById("player1");
+    const player2Input = document.getElementById("player2");
     const submitBtn = document.getElementById("submit");
     const form = document.getElementById("form");
     const board = document.getElementById("board");
@@ -105,7 +105,7 @@
     let player1 = "";
     let player2 = "";
     let currentPlayer = "";
-    let currentSymbol = "X";
+    let currentSymbol = "x"; // lowercase for Player1
     let gameActive = true;
 
     const winPatterns = [
@@ -120,8 +120,8 @@
     ];
 
     submitBtn.addEventListener("click", () => {
-      player1 = player1Input.value.trim() || "Player 1";
-      player2 = player2Input.value.trim() || "Player 2";
+      player1 = player1Input.value.trim() || "Player1";
+      player2 = player2Input.value.trim() || "Player2";
       currentPlayer = player1;
 
       form.style.display = "none";
@@ -136,7 +136,7 @@
         cell.textContent = currentSymbol;
 
         if (checkWin()) {
-          messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
+          messageDiv.textContent = `${currentPlayer} congratulations you won!`;
           gameActive = false;
           return;
         }
@@ -148,11 +148,11 @@
         }
 
         // Switch player
-        if (currentSymbol === "X") {
-          currentSymbol = "O";
+        if (currentSymbol === "x") {
+          currentSymbol = "o";
           currentPlayer = player2;
         } else {
-          currentSymbol = "X";
+          currentSymbol = "x";
           currentPlayer = player1;
         }
 
